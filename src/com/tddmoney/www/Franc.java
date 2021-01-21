@@ -1,13 +1,13 @@
 package com.tddmoney.www;
 
-public class Dollar extends Money {
+public class Franc extends Money {
 
-    public Dollar(int ammount){
+    public Franc(int ammount){
         this.ammount = ammount;
     }
 
     public Money times(int multiplier) {
-        return new Dollar(ammount * multiplier);
+        return new Franc(ammount * multiplier);
     }
 
 
