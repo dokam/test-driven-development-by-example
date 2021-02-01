@@ -1,24 +1,36 @@
 package com.tddmoney.www;
 
-public abstract class Money {
-    protected int ammount;
+public class Money {
+    public int amount;
+    public String currency;
 
-    public abstract String currency();
+    Money(int amount, String currency) {
+        this.amount = amount;
+        this.currency = currency;
+    }
+
+
+    public String currency() {
+        return currency;
+    }
 
     public boolean equals(Object object){
         Money money = (Money) object;
-        return ammount == money.ammount && currency().equals(money.currency());
+        return amount == money.amount && currency().equals(money.currency());
     }
 
-    public static Money dollar(int ammount, String currency){
-        return new Dollar(ammount,currency);
+    public static Money dollar(int amount) {
+        return new Money(amount, "USD");
     }
 
-    public static Money franc(int ammount, String currency){
-        return new Franc(ammount,currency);
+    public static Money franc(int amount) {
+        return new Money(amount, "CHF");
     }
 
-    public abstract Money times(int multiplier);
+
+    public Money times(int multiplier) {
+        return new Money(amount * multiplier, currency);
+    }
 
 
 }
