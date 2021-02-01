@@ -1,6 +1,6 @@
 package com.tddmoney.www;
 
-public class Money {
+public class Money implements Expression {
     public int amount;
     public String currency;
 
@@ -32,5 +32,9 @@ public class Money {
         return new Money(amount * multiplier, currency);
     }
 
+
+    public Expression plus(Money addend) {
+        return new Sum(this,addend);
+    }
 
 }
